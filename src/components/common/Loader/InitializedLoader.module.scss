@@ -1,0 +1,13 @@
+.initializedLoader {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  h1 {
+    font-weight: bold;
+    font-size: 42px;
+    color: #1877f2;
+    margin-bottom: 5px;
+  }
+}

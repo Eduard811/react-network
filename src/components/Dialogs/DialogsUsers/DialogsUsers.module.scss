@@ -1,0 +1,53 @@
+.dialogs__users__items {
+  display: flex;
+  position: relative;
+  padding: 15px;
+  width: 100%;
+  cursor: pointer;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+  transition: transform 150ms ease-out;
+  transform: translateY(0%);
+  margin-bottom: 15px;
+  &:hover {
+    transform: translateY(2%);
+  }
+}
+
+.items__img {
+  display: block;
+  width: 100px;
+  margin-right: 15px;
+  @media (max-width: 540px) {
+    width: 70px;
+  }
+}
+
+.items__name {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  p {
+    font-size: 20px;
+    color: #000000;
+    @media (max-width: 540px) {
+      font-size: 18px;
+    }
+  }
+}
+
+//.DialogsUsers_items__img__35a9j {
+//  width: 100px;
+//  width: 70px;
+//}
+//.DialogsUsers_items__name__TFcj- p {
+//  font-size: 20px;
+//  font-size: 18px;
+//}
+//Inline таблица стилей #11
+//.Dialogs_dialogs__users___WCyo img {
+//  width: 100px;
+//  width: 70px;
+//}

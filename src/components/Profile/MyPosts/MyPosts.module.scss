@@ -1,0 +1,111 @@
+.myPost {
+  display: block;
+  margin-bottom: 50px;
+  @media (max-width: 768px) {
+    margin-bottom: 25px;
+  }
+  textarea {
+    height: 150px;
+    resize: none;
+    font-size: 24px;
+    margin-bottom: 15px;
+    @media (max-width: 768px) {
+      height: 80px;
+      font-size: 16px;
+    }
+  }
+  button {
+    width: 150px;
+    height: 40px;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bold;
+    @media (max-width: 768px){
+      width: 100px;
+      height: 35px;
+      font-size: 15px;
+    }
+  }
+}
+
+.myPost__posts {
+  display: block;
+  padding: 15px 0;
+}
+
+.posts {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.posts__avatar {
+  margin-right: 15px;
+  img {
+    max-width: 100px;
+    border-radius: 50%;
+    @media (max-width: 768px) {
+      max-width: 50px;
+    }
+  }
+}
+
+.posts__text {
+  display: block;
+  background-color: #fff;
+  max-width: 400px;
+  width: 100%;
+  min-height: 100px;
+  border-radius: 8px;
+  padding: 15px;
+  font-size: 20px;
+  position: relative;
+  @media (max-width: 768px) {
+    min-height: 80px;
+    font-size: 16px;
+  }
+  @media (max-width: 500px) {
+    max-width: 80%;
+  }
+  @media (max-width: 350px) {
+    max-width: 78%;
+  }
+}
+
+.posts__text__message {
+  display: block;
+  height: 100%;
+  margin-bottom: 15px;
+}
+
+.posts__text__like {
+  display: flex;
+  align-items: center;
+  margin-right: 5px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  color: #828282;
+  font-size: 14px;
+  margin-bottom: 2px;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  svg {
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+    fill: #828282;
+    cursor: pointer;
+  }
+  span {
+    min-width: 10px;
+  }
+}
+
+.active {
+  color: #D7443E;
+  svg {
+    fill: #D7443E;
+  }
+}

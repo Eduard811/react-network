@@ -1,0 +1,99 @@
+.dialogs__messages {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+
+.dialogs__messages__element {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70%;
+  background-color: #fff;
+  height: 350px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+  padding: 15px;
+  overflow: auto;
+  overflow-x: hidden;
+  margin-bottom: 15px;
+  @media (max-width: 960px) {
+    width: 100%;
+  }
+}
+
+.element__wrapper {
+  display: flex;
+  width: 100%;
+  max-height: 100%;
+  padding-bottom: 15px;
+}
+
+.element__img {
+  display: block;
+  width: 70px;
+  @media (max-width: 540px) {
+    width: 50px
+  }
+  img {
+    width: 70px;
+    border-radius: 50%;
+    @media (max-width: 540px) {
+      width: 50px;
+    }
+  }
+}
+
+.element__message {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 10px;
+  p {
+    font-size: 20px;
+    font-weight: normal;
+    max-width: 300px;
+    @media (max-width: 540px) {
+      font-size: 16px;
+      max-width: 200px;
+    }
+  }
+
+  span {
+    font-size: 15px;
+    color: #000000;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+}
+
+.sendMessages {
+  width: 70%;
+  @media (max-width: 960px) {
+    width: 100%;
+  }
+  textarea {
+    height: 150px;
+    resize: none;
+    font-size: 24px;
+    margin-bottom: 15px;
+    @media (max-width: 540px) {
+      font-size: 18px;
+      height: 100px;
+    }
+  }
+
+  button {
+    width: 150px;
+    height: 40px;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bold;
+    @media (max-width: 540px) {
+      width: 100px;
+      height: 35px;
+      font-size: 15px;
+    }
+  }
+}

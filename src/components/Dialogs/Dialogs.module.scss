@@ -1,0 +1,19 @@
+.dialogs {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.dialogs__users {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 300px;
+  img {
+    width: 100px;
+    border-radius: 50%;
+    @media (max-width: 540px) {
+      width: 70px;
+    }
+  }
+}

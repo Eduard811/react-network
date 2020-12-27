@@ -1,0 +1,44 @@
+.profileStatus {
+  position: relative;
+  cursor: pointer;
+  border-radius: 8px;
+  max-width: 300px;
+  &:hover {
+    background-color: #f0f2f5;
+  }
+}
+
+.profileStatus__popup {
+  position: absolute;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 100px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+  border-radius: 8px;
+  top: 0;
+  right: 0;
+  z-index: 100;
+  @media (max-width: 768px) {
+    top: -60px;
+  }
+  @media (max-width: 330px) {
+    width: 266px;
+  }
+  input {
+    margin-top: 15px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    width: 280px;
+    @media (max-width: 330px) {
+      width: 250px;
+    }
+  }
+  button {
+    width: 100px;
+    margin-left: 10px;
+    font-size: 15px;
+    font-weight: bold;
+  }
+}
