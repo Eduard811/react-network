@@ -11,6 +11,9 @@
   transition: transform 150ms ease-out;
   transform: translateY(0%);
   margin-bottom: 15px;
+  @media (max-width: 540px) {
+    min-height: 100px;
+  }
   &:hover {
     transform: translateY(2%);
   }
@@ -38,17 +41,3 @@
     }
   }
 }
-
-//.DialogsUsers_items__img__35a9j {
-//  width: 100px;
-//  width: 70px;
-//}
-//.DialogsUsers_items__name__TFcj- p {
-//  font-size: 20px;
-//  font-size: 18px;
-//}
-//Inline таблица стилей #11
-//.Dialogs_dialogs__users___WCyo img {
-//  width: 100px;
-//  width: 70px;
-//}
