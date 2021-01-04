@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {sendMessageAC} from '../../redux/reducers/dialogsReducer'
+import {actions} from '../../redux/reducers/dialogsReducer'
 import Dialogs from './Dialogs'
 import {Route, Switch} from 'react-router-dom'
 import Messages from './Messages/Messages'
@@ -28,7 +28,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     sendMessage: (newMessageBody) => {
-      dispatch(sendMessageAC(newMessageBody))
+      dispatch(actions.sendMessageAC(newMessageBody))
     }
   }
 }

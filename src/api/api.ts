@@ -1,4 +1,5 @@
 import axios from 'axios'
+import {ProfileType} from '../redux/reducers/profileReducer'
 
 const instance = axios.create({
   withCredentials: true,
@@ -9,25 +10,53 @@ const instance = axios.create({
 })
 
 export const usersAPI = {
-  getUsers(currentPage, pageSize, search = '') {
+  getUsers(currentPage: number, pageSize: number, search = '') {
     const str = search.toLowerCase()
     return instance.get(`users?page=${currentPage + 1}&count=${pageSize}&term=${str}`)
       .then(response => response.data)
   },
-  follow(userId) {
+  follow(userId: number) {
     return instance.post(`follow/${userId}`)
   },
-  unFollow(userId) {
+  unFollow(userId: number) {
     return instance.delete(`follow/${userId}`)
   }
 }
 
+export enum ResultCode {
+  Success = 0,
+  Error = 1
+}
+
+export enum ResultCodeForCaptcha {
+  CaptchaIsRequired = 10
+}
+
+type MeResponse = {
+  data: {
+    id: number
+    email: string
+    login: string
+  }
+  resultCode: ResultCode
+  messages: Array<string>
+}
+
+type LoginResponse = {
+  data: {
+    userId: number
+  }
+  resultCode: ResultCode | ResultCodeForCaptcha
+  messages: Array<string>
+}
+
 export const authAPI = {
   me() {
-    return instance.get(`auth/me`)
+    return instance.get<MeResponse>(`auth/me`)
   },
-  login(email, password, rememberMe = true, captcha = null) {
-    return instance.post(`auth/login`, {email, password, rememberMe, captcha})
+  login(email: string, password: string, rememberMe = true, captcha: null | string = null) {
+    return instance.post<LoginResponse>(`auth/login`, {email, password, rememberMe, captcha})
+        .then(res => res.data)
   },
   logout() {
     return instance.delete(`auth/login`)
@@ -35,16 +64,16 @@ export const authAPI = {
 }
 
 export const profileAPI = {
-  getProfile(userId) {
+  getProfile(userId: number) {
     return instance.get(`profile/${userId}`)
   },
-  getStatus(userId) {
+  getStatus(userId: number) {
     return instance.get(`profile/status/${userId}`)
   },
-  updateStatus(status) {
+  updateStatus(status: string) {
     return instance.put(`profile/status`, {status: status})
   },
-  savePhoto(photoFile) {
+  savePhoto(photoFile: any) {
     const formData = new FormData()
     formData.append('image', photoFile)
 
@@ -54,7 +83,7 @@ export const profileAPI = {
       }
     })
   },
-  saveProfileInfo(profile) {
+  saveProfileInfo(profile: ProfileType) {
     return instance.put(`profile`, profile)
   }
 }

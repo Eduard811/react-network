@@ -1,4 +1,4 @@
-const SEND_NEW_MESSAGE = 'SEND_NEW_MESSAGE'
+import {InferActionTypes} from "../store";
 
 type UsersType = {
   id: number,
@@ -22,10 +22,12 @@ const initialState = {
 }
 
 type InitialStateType = typeof initialState
+type ActionsType = InferActionTypes<typeof actions>
 
-const dialogsReducer = (state = initialState, action: any): InitialStateType => {
+const dialogsReducer = (state = initialState, action: ActionsType)
+    : InitialStateType => {
   switch (action.type) {
-    case SEND_NEW_MESSAGE:
+    case 'SEND_NEW_MESSAGE':
       return {
         ...state,
         messages: [...state.messages, {id: Math.random(), message: action.newMessageBody, name: 'You'}]
@@ -35,11 +37,9 @@ const dialogsReducer = (state = initialState, action: any): InitialStateType => 
   }
 }
 
-type sendMessageActionType = {
-  type: typeof SEND_NEW_MESSAGE,
-  newMessageBody: string
+export const actions = {
+  sendMessageAC: (newMessageBody: string) => ({type: 'SEND_NEW_MESSAGE', newMessageBody} as const)
 }
 
-export const sendMessageAC = (newMessageBody: string): sendMessageActionType => ({type: SEND_NEW_MESSAGE, newMessageBody})
 
 export default dialogsReducer

@@ -4,7 +4,7 @@ import Post from './Posts/Posts'
 import {reset} from 'redux-form'
 
 import {connect} from 'react-redux'
-import {addPostAC} from '../../../redux/reducers/profileReducer'
+import {actions} from '../../../redux/reducers/profileReducer'
 import MyPostReduxForm from './MyPostForm/MyPostForm'
 
 const MyPosts = ({posts, addPost, like, dislike, profilePhoto}) => {
@@ -39,7 +39,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     addPost: (newPostText) => {
-      dispatch(addPostAC(newPostText))
+      dispatch(actions.addPostAC(newPostText))
     }
   }
 }

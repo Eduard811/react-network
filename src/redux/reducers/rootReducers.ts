@@ -6,8 +6,7 @@ import usersReducer from './usersReducer'
 import authReducer from './authReducer'
 import appReducer from './appReducer'
 
-
-export default combineReducers({
+export const rootReducer = combineReducers({
   app: appReducer,
   usersPage: usersReducer,
   dialogs: dialogsReducer,
@@ -15,3 +14,8 @@ export default combineReducers({
   auth: authReducer,
   form: formReducer
 })
+
+export type RootState = ReturnType<typeof rootReducer>
+
+
+
