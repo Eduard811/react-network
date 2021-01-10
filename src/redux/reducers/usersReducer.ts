@@ -16,7 +16,8 @@ const initialState = {
   currentPage: 0,
   isFetching: false,
   followingInProgress: [] as Array<number>, //array of user id
-  search: ''
+  search: '',
+  queryString: ''
 }
 
 type InitialStateType = typeof initialState
@@ -77,6 +78,11 @@ const usersReducer = (state = initialState, action: ActionsType): InitialStateTy
           ? [...state.followingInProgress, action.userId]
           : state.followingInProgress.filter(id => id !== action.userId)
       }
+      case 'SET_QUERY_STRING':
+      return {
+        ...state,
+        queryString: action.queryString
+      }
     default:
       return state
   }
@@ -91,7 +97,8 @@ export const actions = {
   setSearch: (search: string) => ({type: 'SET_SEARCH', search} as const),
   toggleIsFetching: (isFetching: boolean) => ({type: 'TOGGLE_IS_FETCHING', isFetching} as const),
   toggleFollowingProgress: (isFetching: boolean, userId: number) =>
-      ({type: 'TOGGLE_IS_FOLLOWING_PROGRESS', isFetching, userId} as const)
+      ({type: 'TOGGLE_IS_FOLLOWING_PROGRESS', isFetching, userId} as const),
+  setQueryStringAC: (queryString: string) => ({type: 'SET_QUERY_STRING', queryString} as const)
 }
 
 export const getUsers = (currentPage: number, pageSize: number, search: string): ThunkType =>
@@ -126,7 +133,9 @@ export const unfollow = (userId: number): ThunkType => async (dispatch) => {
    }
 
    dispatch(actions.toggleFollowingProgress(false, userId))
-
 }
+
+export const setQueryString = (queryString: string) => actions.setQueryStringAC(queryString)
+
 
 export default usersReducer

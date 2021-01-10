@@ -1,9 +1,10 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import {connect} from 'react-redux'
 import {
   follow,
   unfollow,
-  getUsers
+  getUsers,
+  setQueryString
 } from '../../redux/reducers/usersReducer'
 import Users from './Users'
 import {UserType} from '../../redux/reducers/usersReducer'
@@ -23,6 +24,7 @@ type MapDispatchToProps = {
   getUsers: (currentPage: number, pageSize: number, search: string) => void
   unfollow: (userId: number) => void
   follow: (userId: number) => void
+  setQueryString: (querystring: string) => void
 }
 
 type Props = MapStateToProps & MapDispatchToProps
@@ -30,11 +32,7 @@ type Props = MapStateToProps & MapDispatchToProps
 
 const UsersContainer: React.FC<Props> = ({getUsers, currentPage, pageSize,
                                            isFetching, totalUsersCount,users,
-                                           unfollow, follow, followingInProgress, search }) => {
-
-  useEffect(() => {
-    getUsers(currentPage, pageSize, search)
-  }, [])
+                                           unfollow, follow, followingInProgress, search,setQueryString}) => {
 
   return (
     <Users
@@ -48,6 +46,7 @@ const UsersContainer: React.FC<Props> = ({getUsers, currentPage, pageSize,
           followingInProgress={followingInProgress}
           getUsers={getUsers}
           search={search}
+          setQueryString={setQueryString}
         />
   )
 }
@@ -67,5 +66,6 @@ const mapStateToProps = (state: RootState): MapStateToProps => {
 export default connect<MapStateToProps, MapDispatchToProps, any, RootState>(mapStateToProps, {
   follow,
   unfollow,
-  getUsers
+  getUsers,
+  setQueryString
 })(UsersContainer)

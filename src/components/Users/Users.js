@@ -1,12 +1,47 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import classes from './Users.module.scss'
 import avatarImg from '../../assets/img/avatar.png'
 import UserLoader from '../common/Loader/UserLoader'
-import {NavLink} from 'react-router-dom'
+import {NavLink, useHistory} from 'react-router-dom'
 import ReactPaginate from 'react-paginate'
 import SearchReduxForm from './Search/Search'
+import * as queryString from 'querystring'
 
 const Users = (props) => {
+
+  const history = useHistory()
+
+  useEffect(() => {
+    const parsed = queryString.parse(history.location.search.substr(1))
+
+    let actualPage = props.currentPage
+    let filter
+
+    if (parsed.page) actualPage = Number(parsed.page - 1)
+    if (parsed.term) {
+      filter = {term: parsed.term}
+    } else {
+      filter = {term: ''}
+    }
+
+    props.getUsers(actualPage, props.pageSize, filter.term)
+  }, [])
+
+  useEffect(() => {
+
+    const query = {}
+
+    if (!!props.search) query.term = props.search
+    if (props.currentPage + 1 !== 1) query.page = props.currentPage + 1
+
+    history.push({
+      pathname: '/find-user',
+      search: queryString.stringify(query)
+    })
+
+    props.setQueryString(queryString.stringify(query))
+
+  }, [props.search, props.currentPage])
 
   const pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
 

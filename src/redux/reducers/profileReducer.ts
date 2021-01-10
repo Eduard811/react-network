@@ -162,17 +162,8 @@ export const saveProfileInfo = (profile: ProfileType): ThunkType => async (dispa
 
 }
 
-export const setFormVisible = (isOpen: boolean) => (dispatch: any) => {
-  dispatch(actions.toggleFormVisible(isOpen))
-}
-
-export const like = (postId: number) => (dispatch: any) => {
-  dispatch(actions.likePost(postId))
-}
-
-export const dislike = (postId: number) => (dispatch: any) => {
-  dispatch(actions.dislikePost(postId))
-}
-
+export const setFormVisible = (isOpen: boolean) => actions.toggleFormVisible(isOpen)
+export const like = (postId: number) => actions.likePost(postId)
+export const dislike = (postId: number) => actions.dislikePost(postId)
 
 export default profileReducer

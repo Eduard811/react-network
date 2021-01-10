@@ -39,7 +39,7 @@ const Header = (props) => {
       <div className={classes.header__logo}>
         <BurgerMenu
           items={[
-            {items: "Find User", links: "/find-user"},
+            {items: "Find User", links: `/find-user${"?" + props.queryString}`},
             {items: "Messages", links:"/dialogs"},
             {items: "News", links:"/news"},
             {items: "Music", links: "/music"},
@@ -74,6 +74,7 @@ const Header = (props) => {
 const mapStateToProps = (state) => ({
   authorizedUserId: state.auth.id,
   profilePhoto: state.profilePage.profilePhoto,
+  queryString: state.usersPage.queryString
 })
 
 export default connect(mapStateToProps, {logout, getProfilePhoto, setFormVisible})(Header)
